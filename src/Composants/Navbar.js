@@ -37,7 +37,7 @@ function Navbar() {
 }
 
 const Wrapper = styled.nav`
-  width: 70vw;
+  width: 80vw;
   height: 50px;
   position: absolute;
   bottom: 30px;
@@ -76,7 +76,7 @@ const Wrapper = styled.nav`
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 28px;
+    bottom: 27px;
     left: 50%;
     transform: translateX(-50%);
     .icon {

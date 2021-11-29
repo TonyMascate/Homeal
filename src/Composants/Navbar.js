@@ -68,7 +68,7 @@ const Wrapper = styled.nav`
     color: black;
   }
   .cart-btn {
-    background-color: #ff7f0a;
+    background-color: red;
     width: 50px;
     height: 50px;
     border-radius: 100%;

@@ -1,10 +1,12 @@
 import React from 'react'
+import { HomeHero, Concept } from '../Composants/index'
 
 function Home() {
     return (
-        <div>
-            
-        </div>
+        <>
+        <HomeHero />
+        <Concept />
+        </>
     )
 }
 

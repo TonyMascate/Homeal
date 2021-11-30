@@ -10,7 +10,7 @@ import {
   Likes,
   SingleProduct,
 } from "./Pages/index";
-import Navbar from "./Composants/Navbar";
+import {Navbar} from "./Composants/index";
 
 function App() {
   return (

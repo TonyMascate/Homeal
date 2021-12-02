@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import styles from "../styles/variable";
-import fruits from '../img/fruits.png'
-import piment from '../img/piment.png'
-import saumon from '../img/saumon.png'
+import fruits from "../img/fruits.png";
+import piment from "../img/piment.png";
+import saumon from "../img/saumon.png";
 
 function Concept() {
   return (
@@ -55,6 +55,7 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: center;
   min-height: 60vh;
+  position: relative;
   .content {
     display: flex;
     flex-direction: column;

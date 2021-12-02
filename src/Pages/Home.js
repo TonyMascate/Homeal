@@ -1,11 +1,14 @@
 import React from 'react'
-import { HomeHero, Concept } from '../Composants/index'
+import HomeProducts from '../Composants/HomeProducts'
+import { HomeHero, Concept, HomeCategories } from '../Composants/index'
 
 function Home() {
     return (
         <>
         <HomeHero />
         <Concept />
+        <HomeProducts />
+        <HomeCategories />
         </>
     )
 }

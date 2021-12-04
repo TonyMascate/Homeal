@@ -18,6 +18,16 @@ function reducer(state, action) {
                 categories: action.payload,
                 loading: false
             }
+        case 'SET_NEXT_SLIDE':
+            let newIndex = state.productsIndex + 1;
+            if(newIndex > state.homeproducts.length - 1){
+                newIndex = 0
+            }
+            console.log(state.productsIndex);
+            return{
+                ...state,
+                productsIndex: newIndex
+            }
     
         default:
             break;

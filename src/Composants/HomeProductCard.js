@@ -5,10 +5,16 @@ import { Categories } from "../datas/MealsPerCategorie";
 import styles from "../styles/variable";
 import LikeBtn from "./LikeBtn";
 
-function HomeProductCard({ strMeal: name, strMealThumb: image, idMeal: id }) {
+function HomeProductCard({
+  strMeal: name,
+  strMealThumb: image,
+  idMeal: id,
+  position,
+}) {
   const product = Categories.flat().find((item) => item.idMeal === id);
+
   return (
-    <Wrapper>
+    <Wrapper className={position}>
       <img src={image} alt="representation de la recette" />
       <div className="text">
         <h3>{name}</h3>
@@ -26,21 +32,26 @@ function HomeProductCard({ strMeal: name, strMealThumb: image, idMeal: id }) {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.article`
   padding: 10px;
   background-color: white;
   color: ${styles.darkgrey};
-  min-width: 250px;
+  width: 250px;
   border-radius: 15px;
-  height: fit-content;
-  margin: 20px;
+  height: min-content;
   min-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 6px 1px 2px rgba(255, 128, 10, 0.4) , 0px 2px 1px 2px
-    rgba(255, 128, 10, 0.75);
+  box-shadow: 0px 6px 1px 2px rgba(255, 128, 10, 0.4),
+    0px 2px 1px 2px rgba(255, 128, 10, 0.75);
+  position: absolute;
+  top: 50px;
+  left: 0%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: all 0.3s linear;
   img {
     width: 100%;
     border-radius: 15px;

@@ -11,7 +11,8 @@ const initialState = {
   products: [],
   loading: false,
   homeproducts: [],
-  categories: []
+  categories: [],
+  productsIndex: 0
 };
 
 const ProductProvider = ({ children }) => {
@@ -32,6 +33,14 @@ const ProductProvider = ({ children }) => {
     dispatch({ type: "SET_ALL_CATEGORIES", payload: data.categories});
   }
 
+  // Fonctions nextslide et prevslide
+  const nextSlide = (index) => {
+    dispatch({type: 'SET_NEXT_SLIDE', payload: index})
+  }
+  const prevSlide = (index) => {
+    dispatch({type: 'SET_PREV_SLIDE', payload: index})
+  }
+
   // USEEFFECT
   useEffect(() => {
     getHomeProducts()
@@ -42,6 +51,8 @@ const ProductProvider = ({ children }) => {
     <ProductContext.Provider
       value={{
         ...state,
+        nextSlide,
+        prevSlide
       }}
     >
       {children}

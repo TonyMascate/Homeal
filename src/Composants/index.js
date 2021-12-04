@@ -5,5 +5,7 @@ import Concept from "./Concept";
 import LikeBtn from "./LikeBtn";
 import HomeCategories from "./HomeCategories";
 import HomeCategoryCard from "./HomeCategoryCard";
+import NextBtn from "./NextBtn";
+import PrevBtn from "./PrevBtn";
 
-export {HomeHero, Navbar, Footer, Concept, LikeBtn, HomeCategories, HomeCategoryCard}
+export {HomeHero, Navbar, Footer, Concept, LikeBtn, HomeCategories, HomeCategoryCard, NextBtn, PrevBtn}

@@ -83,7 +83,7 @@ const Wrapper = styled.section`
     position: absolute;
     top: -2px;
     left: 0;
-    width: 105%;
+    width: 100%;
     overflow: hidden;
     line-height: 0;
     transform: rotate(180deg);

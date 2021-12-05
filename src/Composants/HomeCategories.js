@@ -13,7 +13,7 @@ function HomeCategories() {
         <div className="list">
           {categories.map((item) => {
             const { idCategory: id } = item;
-            return <HomeCategoryCard key={id}/>;
+            return <HomeCategoryCard key={id} {...item}/>;
           })}
         </div>
       </div>
@@ -21,6 +21,21 @@ function HomeCategories() {
   );
 }
 
-const Wrapper = styled.section``;
+const Wrapper = styled.section`
+.categories{
+  width: 100%;
+  overflow: hidden;
+}
+.list{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  overflow-x: auto;
+}
+  h2{
+    margin-bottom: 40px;
+  }
+`;
 
 export default HomeCategories;

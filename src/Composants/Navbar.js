@@ -76,10 +76,10 @@ const Wrapper = styled.nav`
     display: none;
   }
   .mobile {
-    z-index: 100;
+    z-index: 1000;
     width: 80vw;
     height: 50px;
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
@@ -137,7 +137,7 @@ const Wrapper = styled.nav`
       left: 0;
       top: 0;
       width: 100%;
-      z-index: 100;
+      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: space-between;

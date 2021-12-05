@@ -68,7 +68,7 @@ const Wrapper = styled.section`
   }
   .custom-shape-divider-bottom-1638283272 {
     position: absolute;
-    bottom: -1px;
+    bottom: 0px;
     left: 0;
     width: 100%;
     overflow: hidden;

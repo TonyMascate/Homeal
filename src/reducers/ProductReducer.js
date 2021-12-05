@@ -23,10 +23,18 @@ function reducer(state, action) {
             if(newIndex > state.homeproducts.length - 1){
                 newIndex = 0
             }
-            console.log(state.productsIndex);
             return{
                 ...state,
                 productsIndex: newIndex
+            }
+        case 'SET_PREV_SLIDE':
+            let newindex = state.productsIndex - 1;
+            if(newindex < 0){
+                newindex = state.homeproducts.length - 1
+            }
+            return{
+                ...state,
+                productsIndex: newindex
             }
     
         default:

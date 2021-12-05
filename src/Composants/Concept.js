@@ -56,6 +56,7 @@ const Wrapper = styled.section`
   justify-content: center;
   min-height: 60vh;
   position: relative;
+  margin-top: -2px;
   .content {
     display: flex;
     flex-direction: column;

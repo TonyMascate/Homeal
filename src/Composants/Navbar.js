@@ -18,7 +18,7 @@ function Navbar() {
             <Link to="/">
               <AiFillHome className="icon" />
             </Link>
-            <Link to="/">
+            <Link to="/categories">
               <BsFillGridFill className="icon" />
             </Link>
           </div>
@@ -47,7 +47,7 @@ function Navbar() {
                 <Link to="/">ACCUEIL</Link>
               </li>
               <li>
-                <Link to="/">NOS RECETTES</Link>
+                <Link to="/categories">NOS RECETTES</Link>
               </li>
               <li>
                 <Link to="/">CONTACT</Link>

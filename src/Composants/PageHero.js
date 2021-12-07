@@ -14,6 +14,7 @@ function PageHero({title}) {
 const Wrapper = styled.section`
   min-height: 216px;
   height: 20vh;
+  width: 100vw;
   background: url(${hero}) center;
   background-size: cover;
   z-index: 0;

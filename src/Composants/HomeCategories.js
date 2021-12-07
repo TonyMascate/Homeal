@@ -9,7 +9,7 @@ function HomeCategories() {
 
   return (
     <Wrapper>
-      <h2 className='title'>Catégories</h2>
+      <h2 className="title">Catégories</h2>
       <div className="list mobile">
         {categories.map((item) => {
           const { idCategory: id } = item;
@@ -22,7 +22,7 @@ function HomeCategories() {
           return <HomeCategoryCard key={id} {...item} />;
         })}
       </div>
-      <Link to='/categories' className='btn-primary'>
+      <Link to="/categories" className="btn-primary btn-marginleft">
         NOS CATÉGORIES
       </Link>
     </Wrapper>
@@ -39,21 +39,18 @@ const Wrapper = styled.section`
     padding: 30px 0px;
     margin: 10px 0;
   }
-  .large{
+  .large {
     display: none;
-  }
-  a{
-    margin-left: 10px;
   }
   @media only screen and (min-width: 991px) {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    .large{
+    .large {
       display: flex;
     }
-    .mobile{
+    .mobile {
       display: none;
     }
     .list {

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { NextBtn, PrevBtn } from "./index";
 import { useProductContext } from "../context/ProductContext";
 import HomeProductCard from "./HomeProductCard";
+import { Link } from "react-router-dom";
 
 function HomeProducts() {
   const { homeproducts, productsIndex } = useProductContext();
@@ -60,6 +61,9 @@ function HomeProducts() {
         <NextBtn className="slideBtn" />
         <PrevBtn className="slideBtn" />
       </div>
+      <Link to='/categories' className='btn-primary btn-marginleft'>
+        NOS RECETTES
+      </Link>
     </Wrapper>
   );
 }

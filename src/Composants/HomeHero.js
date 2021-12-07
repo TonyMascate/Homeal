@@ -15,7 +15,7 @@ function HomeHero() {
             Nous vous livrons les ingrédients à domicile pour le plus grand
             plaisir de vos papilles.
           </p>
-          <Link to="/" className="btn-primary">
+          <Link to="/categories" className="btn-primary">
             DÉCOUVRIR
           </Link>
         </div>

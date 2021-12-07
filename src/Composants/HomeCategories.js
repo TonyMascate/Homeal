@@ -36,7 +36,8 @@ const Wrapper = styled.section`
     justify-content: flex-start;
     width: 100%;
     overflow-x: auto;
-    padding: 40px 0px;
+    padding: 30px 0px;
+    margin: 10px 0;
   }
   .large{
     display: none;

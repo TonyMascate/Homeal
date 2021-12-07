@@ -8,7 +8,7 @@ function HomeProducts() {
   const { homeproducts, productsIndex } = useProductContext();
 
   return (
-    <Wrapper className="container">
+    <Wrapper>
       <div className="custom-shape-divider-top-1638371894">
         <svg
           data-name="Layer 1"
@@ -22,18 +22,20 @@ function HomeProducts() {
           ></path>
         </svg>
       </div>
-      <h2>Nos recettes</h2>
+      <h2 className="title">Nos recettes</h2>
       <div className="underline"></div>
       <div className="recette-list">
         {homeproducts.map((item, personIndex) => {
-
           const { idMeal: id } = item;
           let position = "stockSlide";
           if (personIndex === productsIndex) {
             position = "activeSlide";
           }
-          if(personIndex === productsIndex + 1 || (productsIndex === homeproducts.length - 1 && personIndex === 0)){
-            position= 'nextSlide';
+          if (
+            personIndex === productsIndex + 1 ||
+            (productsIndex === homeproducts.length - 1 && personIndex === 0)
+          ) {
+            position = "nextSlide";
           }
           if (
             personIndex === productsIndex - 1 ||
@@ -53,31 +55,31 @@ function HomeProducts() {
           ) {
             position = "prevStock";
           }
-          return <HomeProductCard key={id} {...item} position={position}/>;
+          return <HomeProductCard key={id} {...item} position={position} />;
         })}
-        <NextBtn/>
-        <PrevBtn/>
+        <NextBtn className="slideBtn" />
+        <PrevBtn className="slideBtn" />
       </div>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
-  padding: 100px 10px;
+  padding: 100px 0px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   position: relative;
   .recette-list {
-    max-width: 350px;
+    max-width: max-content;
     width: 100%;
     height: 500px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
-    overflow: hidden;
+    overflow-x: auto;
   }
   .custom-shape-divider-top-1638371894 {
     position: absolute;
@@ -101,9 +103,14 @@ const Wrapper = styled.section`
     fill: #fea53d;
   }
   @media only screen and (min-width: 991px) {
+    align-items: center;
+    h2{
+      margin-left: 0;
+    }
     .recette-list {
       max-width: 900px;
       width: 100%;
+      overflow: hidden;
     }
   }
 `;

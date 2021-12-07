@@ -10,7 +10,7 @@ import {
   Likes,
   SingleProduct,
 } from "./Pages/index";
-import {Navbar} from "./Composants/index";
+import { Navbar, Footer } from "./Composants/index";
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
         <Route exact path="/products/:id" element={<SingleProduct />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>
+      <Footer />
     </Router>
   );
 }

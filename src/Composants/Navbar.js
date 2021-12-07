@@ -80,7 +80,7 @@ const Wrapper = styled.nav`
     width: 80vw;
     height: 50px;
     position: fixed;
-    bottom: 30px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -144,6 +144,7 @@ const Wrapper = styled.nav`
       height: 60px;
       padding: 0 10px;
       background-color: white;
+      border-bottom: 2px solid ${styles.tertiary};
       .logo {
         margin: 0 10px;
         img {

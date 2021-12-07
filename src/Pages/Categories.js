@@ -2,9 +2,9 @@ import React from 'react'
 
 function Categories() {
     return (
-        <div>
+        <main className='page-100'>
             
-        </div>
+        </main>
     )
 }
 

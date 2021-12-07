@@ -2,11 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import homehero from "../img/homehero.png";
-import { useProductContext } from "../context/ProductContext";
 
 function HomeHero() {
-
-  const {products} = useProductContext()
 
   return (
     <Wrapper className="container">

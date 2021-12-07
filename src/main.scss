@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto+Slab:wght@400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800;900&display=swap');
 
 $primary: #ff7f0a;
 $primary65: rgba(255, 128, 10, 0.65);
@@ -9,6 +9,7 @@ $nav-grey: #dfdfdf;
 $light-grey: #fcfcfc;
 $light-orange: #ffecd7;
 $dark-grey: #303030;
+$black-grey: #2F2C27;
 $dark-orange: #382911;
 $red: #ce2424;
 $green: #4fb200;
@@ -26,7 +27,7 @@ html {
   color: $light-grey;
 }
 body {
-  background-color: $dark-grey;
+  background-color: $light-grey;
 }
 .container {
   padding: 0 10px;
@@ -36,7 +37,12 @@ h2 {
   line-height: 100%;
   font-weight: 900;
 }
+a{
+  text-decoration: none;
+  color: $light-grey;
+}
 .btn-primary {
+  display: inline-block;
   background-color: $primary;
   text-decoration: none;
   color: $light-grey;
@@ -46,66 +52,69 @@ h2 {
   font-size: 1.5rem;
   font-weight: 900;
 }
+.title{
+  color: $dark-grey;
+  margin-left: 10px;
+}
 
 // article home products
-article.activeSlide {
-  opacity: 1;
-  transform: translateX(50px);
-}
-article.lastSlide, article.prevStock {
-  transform: translateX(-200%);
-}
-article.nextSlide, article.stockSlide {
-  transform: translateX(200%);
-}
 @media only screen and (min-width: 991px) {
   article.activeSlide {
-  opacity: 1;
-  transform: translateX(325px);
-}
-article.lastSlide {
-  opacity: 1;
-  transform: translateX(55px);
-}
-article.nextSlide {
-  opacity: 1;
-  transform: translateX(595px);
-}
-article.prevStock {
-  transform: translateX(-150%);
-}
-article.stockSlide {
-  transform: translateX(400%)
-}
+    opacity: 1;
+    transform: translateX(325px);
+  }
+  article.lastSlide {
+    opacity: 1;
+    transform: translateX(55px);
+  }
+  article.nextSlide {
+    opacity: 1;
+    transform: translateX(595px);
+  }
+  article.prevStock {
+    transform: translateX(-150%);
+  }
+  article.stockSlide {
+    transform: translateX(400%);
+  }
 }
 
 // home products btn
 .nextBtn,
 .prevBtn {
-  width: 42px;
-  height: 42px;
-  background-color: $secondary;
-  border-radius: 100%;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  font-weight: 900;
-  svg {
-    width: min-content;
-    height: min-content;
+  display: none !important;
+}
+@media only screen and (min-width: 991px) {
+  .nextBtn,
+  .prevBtn {
+    display: flex !important;
+    width: 42px;
+    height: 42px;
+    background-color: $secondary;
+    border-radius: 100%;
+    position: absolute;
+    font-size: 3rem;
+    font-weight: 900;
+    svg {
+      width: min-content;
+      height: min-content;
+    }
+  }
+  .nextBtn {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+  }
+  .prevBtn {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
   }
 }
-.nextBtn {
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
-}
-.prevBtn {
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
+
+// Gestion taille page + footer
+.page-100{
+  min-height: 85vh;
 }

@@ -34,9 +34,10 @@ function HomeProductCard({
 
 const Wrapper = styled.article`
   padding: 10px;
+  margin: 0 10px;
   background-color: white;
   color: ${styles.darkgrey};
-  width: 250px;
+  min-width: 250px;
   border-radius: 15px;
   height: min-content;
   min-height: 400px;
@@ -44,14 +45,8 @@ const Wrapper = styled.article`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 6px 1px 2px rgba(255, 128, 10, 0.4),
-    0px 2px 1px 2px rgba(255, 128, 10, 0.75);
-  position: absolute;
-  top: 50px;
-  left: 0%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: all 0.3s linear;
+  box-shadow: 0px 6px 1px 2px ${styles.primary40},
+    0px 2px 1px 2px ${styles.primary75};
   img {
     width: 100%;
     border-radius: 15px;
@@ -82,6 +77,17 @@ const Wrapper = styled.article`
     justify-content: space-between;
     flex-grow: 1;
     width: 100%;
+  }
+
+  @media only screen and (min-width: 991px) {
+    position: absolute;
+    top: 50px;
+    left: 0%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.3s linear;
+    margin: 0;
+    max-width: 250px;
   }
 `;
 

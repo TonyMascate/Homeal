@@ -32,11 +32,7 @@ const Wrapper = styled.article`
   justify-content: center;
   margin: 0 10px;
   overflow: hidden;
-  box-shadow: 0px 1px 1px 0px rgba(43, 43, 43, 0.075),
-    0px 2px 2px 0px rgba(43, 43, 43, 0.075),
-    0px 4px 4px 0px rgba(43, 43, 43, 0.075),
-    0px 8px 8px 0px rgba(43, 43, 43, 0.075),
-    0px 16px 16px 0px rgba(43, 43, 43, 0.075);
+  box-shadow: ${styles.blackshadow};
   &:hover {
     .image {
       img {

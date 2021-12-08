@@ -84,6 +84,7 @@ const Wrapper = styled.section`
     justify-content: flex-start;
     position: relative;
     overflow-x: auto;
+    margin: 10px 0;
   }
   .custom-shape-divider-top-1638371894 {
     position: absolute;
@@ -108,7 +109,7 @@ const Wrapper = styled.section`
   }
   @media only screen and (min-width: 991px) {
     align-items: center;
-    h2{
+    h2 {
       margin-left: 0;
     }
     .recette-list {

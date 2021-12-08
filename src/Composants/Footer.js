@@ -32,7 +32,7 @@ const Wrapper = styled.footer`
   font-size: 1.1rem;
   .top{
       background-color: ${styles.darkgrey2};
-      flex-grow: 1;
+      height: 85px;
       width: 100%;
       display: flex;
       align-items: center;

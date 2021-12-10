@@ -36,6 +36,11 @@ function reducer(state, action) {
                 ...state,
                 productsIndex: newindex
             }
+        case 'GET_SINGLE_PRODUCT':
+            return{
+                ...state,
+                singleProduct: action.payload.meals[0]
+            }
     
         default:
             break;

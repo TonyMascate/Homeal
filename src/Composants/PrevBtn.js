@@ -7,9 +7,9 @@ function PrevBtn({index}) {
     const {prevSlide} = useProductContext()
 
     return (
-      <div className="prevBtn" onClick={() => prevSlide()}>
+      <button className="prevBtn" onClick={() => prevSlide()}>
         <IoIosArrowBack />
-      </div>
+      </button>
     );
 }
 

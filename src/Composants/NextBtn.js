@@ -7,9 +7,9 @@ function NextBtn({index}) {
     const {nextSlide} = useProductContext()
 
     return (
-        <div className='nextBtn' onClick={() => nextSlide()}>
+        <button className='nextBtn' onClick={() => nextSlide()}>
             <IoIosArrowForward />
-        </div>
+        </button>
     )
 }
 

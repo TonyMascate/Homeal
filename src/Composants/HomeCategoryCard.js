@@ -37,7 +37,6 @@ const Wrapper = styled.article`
     .image {
       img {
         transform: scale(1.2);
-        transition: 0.3s ease all;
       }
     }
   }
@@ -66,6 +65,7 @@ const Wrapper = styled.article`
   }
   img {
     transform: scale(cover);
+    transition: 0.3s ease all;
   }
   .name {
     display: flex;
@@ -86,15 +86,15 @@ const Wrapper = styled.article`
     transform-origin: top left;
     transform: scale(1) translate(-50%, -50%);
     z-index: 1;
+    transition: 0.3s ease all;
     .zoom {
       transform: rotate(0);
+      transition: 0.3s ease-in-out all;
     }
     &:hover {
       transform: scale(1.2) translate(-50%, -50%);
-      transition: 0.3s ease all;
       .zoom {
         transform: rotate(90deg);
-        transition: 0.3s ease-in-out all;
       }
     }
   }

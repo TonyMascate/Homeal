@@ -21,6 +21,7 @@ const Wrapper = styled.button`
   align-items: center;
   justify-content: center;
   color: ${styles.secondary};
+  background-color: white;
   .icon {
     height: 70%;
     width: 70%;

@@ -90,9 +90,11 @@ button {
     transform: translateX(595px);
   }
   article.prevStock {
+    opacity: 0;
     transform: translateX(-150%);
   }
   article.stockSlide {
+    opacity: 0;
     transform: translateX(400%);
   }
 }

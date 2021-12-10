@@ -8,5 +8,6 @@ import HomeCategoryCard from "./HomeCategoryCard";
 import NextBtn from "./NextBtn";
 import PrevBtn from "./PrevBtn";
 import PageHero from "./PageHero";
+import AddToCart from './AddToCart'
 
-export {HomeHero, Navbar, Footer, Concept, LikeBtn, HomeCategories, HomeCategoryCard, NextBtn, PrevBtn, PageHero}
+export {HomeHero, Navbar, Footer, Concept, LikeBtn, HomeCategories, HomeCategoryCard, NextBtn, PrevBtn, PageHero, AddToCart}

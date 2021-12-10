@@ -12,7 +12,8 @@ const initialState = {
   loading: false,
   homeproducts: [],
   categories: [],
-  productsIndex: 0
+  productsIndex: 0,
+  singleProduct: {}
 };
 
 const ProductProvider = ({ children }) => {
@@ -24,6 +25,14 @@ const ProductProvider = ({ children }) => {
     const response = await fetch(urlHome)
     const data = await response.json()
     dispatch({type: 'SET_HOME_PRODUCTS', payload: data.meals.slice(0,12)})
+  };
+
+  // FETCH DES PRODUITS PAGE D'ACCUEIL
+  const getSingleProduct = async(url) => {
+    dispatch({type: 'SET_LOADING_TRUE'})
+    const response = await fetch(url)
+    const data = await response.json()
+    dispatch({type: 'GET_SINGLE_PRODUCT', payload: data})
   };
 
   const getAllCategories = async() => {
@@ -52,7 +61,8 @@ const ProductProvider = ({ children }) => {
       value={{
         ...state,
         nextSlide,
-        prevSlide
+        prevSlide,
+        getSingleProduct
       }}
     >
       {children}

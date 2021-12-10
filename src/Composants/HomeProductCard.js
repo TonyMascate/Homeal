@@ -21,7 +21,7 @@ function HomeProductCard({
         <div className="bottom">
           <h3>{product.price} €</h3>
           <div className="buttons">
-            <Link to="/products/52772" className="btn-primary">
+            <Link to={`/products/${id}`} className="btn-primary">
               VOIR
             </Link>
             <LikeBtn />

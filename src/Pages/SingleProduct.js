@@ -173,6 +173,7 @@ const Wrapper = styled.section`
   color: ${styles.darkgrey};
   .image {
     width: 100%;
+    background-position: center;
     background-size: cover;
     height: 35vh;
     position: relative;

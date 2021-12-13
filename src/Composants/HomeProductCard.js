@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Categories } from "../datas/MealsPerCategorie";
+import Categories from "../datas/MealsPerCategorie";
 import styles from "../styles/variable";
 import LikeBtn from "./LikeBtn";
 

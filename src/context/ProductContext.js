@@ -1,19 +1,26 @@
 import React, { useContext, useEffect, useReducer } from "react";
 import { createContext } from "react";
 import reducer from "../reducers/ProductReducer";
+import Categories from '../datas/MealsPerCategorie'
 
 const ProductContext = createContext();
 
 const urlHome = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=French'
 const urlCategories = "https://www.themealdb.com/api/json/v1/1/categories.php";
+ // GET MAX PRICE
+const highestprice = Array.from(Categories.flat().map (item => item.price)).sort((a, b) => { return b - a})[0]
 
 const initialState = {
   products: [],
+  filters: {
+    category: 'Beef'
+  },
   loading: false,
   homeproducts: [],
   categories: [],
   productsIndex: 0,
-  singleProduct: {}
+  singleProduct: {},
+  showFilters: false
 };
 
 const ProductProvider = ({ children }) => {
@@ -50,6 +57,26 @@ const ProductProvider = ({ children }) => {
     dispatch({type: 'SET_PREV_SLIDE', payload: index})
   }
 
+  // CHANGE SHOW FILTERS
+  const changeShowFilters = () => {
+    dispatch({type: 'CHANGE_SHOW_FILTERS'})
+  }
+
+  // SET CATEGORY
+  const setCategory = (element) => {
+    dispatch({type: 'CHANGE_CATEGORY', payload: element})
+  }
+
+  // UPDATE PRODUCTS
+  const updateProducts = async() => {
+    dispatch({type: 'SET_LOADING_TRUE'})
+    const response = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${state.filters.category}`
+    );
+    const data = await response.json()
+    dispatch({type: 'UPDATE_PRODUCTS', payload: data.meals})
+  }
+
   // USEEFFECT
   useEffect(() => {
     getHomeProducts()
@@ -62,7 +89,10 @@ const ProductProvider = ({ children }) => {
         ...state,
         nextSlide,
         prevSlide,
-        getSingleProduct
+        getSingleProduct,
+        changeShowFilters,
+        updateProducts,
+        setCategory
       }}
     >
       {children}

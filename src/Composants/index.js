@@ -9,5 +9,7 @@ import NextBtn from "./NextBtn";
 import PrevBtn from "./PrevBtn";
 import PageHero from "./PageHero";
 import AddToCart from './AddToCart'
+import FilterSidebar from "./FilterSidebar";
+import Filters from "./Filters";
 
-export {HomeHero, Navbar, Footer, Concept, LikeBtn, HomeCategories, HomeCategoryCard, NextBtn, PrevBtn, PageHero, AddToCart}
+export {HomeHero, Navbar, Footer, Concept, LikeBtn, HomeCategories, HomeCategoryCard, NextBtn, PrevBtn, PageHero, AddToCart, FilterSidebar, Filters}

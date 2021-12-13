@@ -1,3 +1,5 @@
+import Categories from "../datas/MealsPerCategorie";
+
 function reducer(state, action) {
 
     switch (action.type) {
@@ -40,6 +42,30 @@ function reducer(state, action) {
             return{
                 ...state,
                 singleProduct: action.payload.meals[0]
+            }
+        case 'CHANGE_SHOW_FILTERS':
+            if(state.showFilters){
+                return {
+                  ...state,
+                  showFilters: false,
+                };
+            }else{
+                return {
+                  ...state,
+                  showFilters: true,
+                };
+            }
+        case 'UPDATE_PRODUCTS':
+            return{
+                ...state,
+                products: action.payload
+            }
+        case 'CHANGE_CATEGORY':
+            return{
+                ...state,
+                filters: {
+                    category: action.payload
+                }
             }
     
         default:

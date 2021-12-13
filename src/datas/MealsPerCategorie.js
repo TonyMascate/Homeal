@@ -1,4 +1,4 @@
-export const Categories = [
+const Categories = [
   // Seafood
   [
     {
@@ -2026,3 +2026,4 @@ export const Categories = [
     },
   ],
 ];
+ export default Categories

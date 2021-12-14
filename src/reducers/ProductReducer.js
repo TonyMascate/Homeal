@@ -56,7 +56,7 @@ function reducer(state, action) {
                 };
             }
         case 'UPDATE_PRODUCTS':
-            return{
+            return {
                 ...state,
                 products: action.payload
             }

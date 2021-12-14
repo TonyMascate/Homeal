@@ -1,22 +1,27 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { PageHero, FilterSidebar } from "../Composants/index";
+import { PageHero, FilterSidebar, ProductCard } from "../Composants/index";
 import { useProductContext } from "../context/ProductContext";
 import styles from "../styles/variable";
 
 function Produits() {
-
-  const {products, showFilters, changeShowFilters, filters: {category}, updateProducts} = useProductContext()
+  const {
+    products,
+    showFilters,
+    changeShowFilters,
+    filters: { category },
+    updateProducts,
+  } = useProductContext();
 
   useEffect(() => {
-    updateProducts()
-  }, [category])
+    updateProducts();
+  }, [category]);
 
   return (
     <Wrapper className="page-100">
       <PageHero title="Produits" />
       <div className="content">
-        <div className="filters-mobile">
+        <div className="filters filters-mobile">
           <div className="header">
             <button className="btn-primary" onClick={() => changeShowFilters()}>
               {showFilters ? "Filtres -" : "Filtres +"}
@@ -42,11 +47,45 @@ function Produits() {
           {showFilters && <FilterSidebar />}
           <div className="underline"></div>
         </div>
-        <div className="filters-large"></div>
+        <div className="filters filters-large">
+          <div className="header">
+            <button className="btn-primary">Filtres</button>
+            <div className="custom-select">
+              <select name="sort" id="sort">
+                <option value="prix (croissant)" data-label="croissant">
+                  Prix (croissant)
+                </option>
+                <option value="prix (décroissant)" data-label="decroissant">
+                  Prix (décroissant)
+                </option>
+                <option value="nom (a-z)" data-label="nomaz">
+                  Nom (A - Z)
+                </option>
+                <option value="nom (z-a)" data-label="nomza">
+                  Nom (Z - A)
+                </option>
+              </select>
+              <span className="custom-arrow"></span>
+            </div>
+          </div>
+          <div className="underline"></div>
+          <div className="main">
+            <FilterSidebar />
+            <div className="list">
+              <div className="products">
+                {products &&
+                  products.map((item) => {
+                    return <ProductCard key={item.idMeal} {...item} />;
+                  })}
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="products-list">
-          {products.map(item => {
-            return <p key={item.idMeal}>{item.strMeal}</p>
-          })}
+          {products &&
+            products.map((item) => {
+              return <ProductCard key={item.idMeal} {...item} />;
+            })}
         </div>
       </div>
     </Wrapper>
@@ -54,21 +93,20 @@ function Produits() {
 }
 
 const Wrapper = styled.section`
+  position: relative;
+  overflow: hidden;
   .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    .filters-large {
-      display: none;
-    }
-    .filters-mobile {
+    .filters {
+      padding: 20px 0;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px 0;
-      width: 100%;
       .header {
         width: 100%;
         padding: 0 10px;
@@ -135,10 +173,88 @@ const Wrapper = styled.section`
         background-color: ${styles.navgrey};
       }
     }
+    .filters-large {
+      display: none;
+    }
     .products-list {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      article {
+        margin: 30px 10px !important;
+      }
       p {
         color: ${styles.darkgrey};
+      }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: -50px;
+    .content {
+      height: 100vh;
+      overflow: hidden;
+      .filters-mobile {
+        display: none;
+      }
+      .filters-large {
+        display: flex;
+        align-items: flex-end;
+        height: 100%;
+        padding: 0;
+        .header {
+          position: relative;
+          height: 5vh;
+          margin: 20px 0;
+        }
+        .underline {
+          margin: 0;
+        }
+        .main {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          height: 95vh;
+          overflow: hidden;
+          .sidebar {
+            width: 15vw;
+            height: 100%;
+            min-width: 170px;
+            border-right: 1px solid ${styles.navgrey};
+            .categories {
+              display: flex;
+              flex-direction: column;
+            }
+            .categories--list {
+              width: fit-content;
+              align-items: flex-start;
+              flex-direction: column;
+            }
+          }
+          .list {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 0 30px;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            .products {
+              height: max-content;
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: center;
+              article {
+                margin: 30px 50px;
+              }
+            }
+          }
+        }
+      }
+      .products-list {
+        display: none;
       }
     }
   }

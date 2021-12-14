@@ -40,9 +40,6 @@ const Wrapper = styled.section`
       z-index: 2;
       font-size: 36px;
   }
-  @media screen and (min-width: 768px) {
-    margin-top: 60px;
-  }
 `;
 
 export default PageHero;

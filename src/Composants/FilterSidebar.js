@@ -40,6 +40,7 @@ const Wrapper = styled.div`
       font-weight: 500;
       font-size: 1rem;
       margin: 5px 10px 5px 0px;
+      cursor: pointer;
     }
   }
 `;

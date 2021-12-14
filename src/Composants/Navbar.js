@@ -133,9 +133,6 @@ const Wrapper = styled.nav`
       display: none;
     }
     .large-screen {
-      position: fixed;
-      left: 0;
-      top: 0;
       width: 100%;
       z-index: 1000;
       display: flex;

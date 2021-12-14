@@ -182,9 +182,7 @@ const Wrapper = styled.section`
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      article {
-        margin: 30px 10px !important;
-      }
+      padding: 0 10px;
       p {
         color: ${styles.darkgrey};
       }

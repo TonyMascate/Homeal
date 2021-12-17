@@ -11,5 +11,7 @@ import PageHero from "./PageHero";
 import AddToCart from './AddToCart'
 import FilterSidebar from "./FilterSidebar";
 import ProductCard from "./ProductCard";
+import Loading from "./Loading";
+import ScrollToTop from './ScrollToTop'
 
-export {HomeHero, Navbar, Footer, Concept, LikeBtn, HomeCategories, HomeCategoryCard, NextBtn, PrevBtn, PageHero, AddToCart, FilterSidebar, ProductCard}
+export {HomeHero, Navbar, Footer, Concept, LikeBtn, HomeCategories, HomeCategoryCard, NextBtn, PrevBtn, PageHero, AddToCart, FilterSidebar, ProductCard, Loading, ScrollToTop}

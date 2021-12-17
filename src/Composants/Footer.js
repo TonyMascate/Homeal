@@ -30,6 +30,7 @@ const Wrapper = styled.footer`
   justify-content: center;
   font-weight: 600;
   font-size: 1.1rem;
+  text-align: center;
   .top{
       background-color: ${styles.darkgrey2};
       height: 85px;

@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { PageHero, FilterSidebar, ProductCard } from "../Composants/index";
+import {
+  PageHero,
+  FilterSidebar,
+  ProductCard,
+  Loading,
+} from "../Composants/index";
 import { useProductContext } from "../context/ProductContext";
 import styles from "../styles/variable";
 
@@ -8,6 +13,7 @@ function Produits() {
   const {
     products,
     showFilters,
+    loading,
     changeShowFilters,
     filters: { category },
     updateProducts,
@@ -73,19 +79,31 @@ function Produits() {
             <FilterSidebar />
             <div className="list">
               <div className="products">
-                {products &&
-                  products.map((item) => {
-                    return <ProductCard key={item.idMeal} {...item} />;
-                  })}
+                {loading ? (
+                  <Loading />
+                ) : (
+                  <>
+                    {products &&
+                      products.map((item) => {
+                        return <ProductCard key={item.idMeal} {...item} />;
+                      })}
+                  </>
+                )}
               </div>
             </div>
           </div>
         </div>
         <div className="products-list">
-          {products &&
-            products.map((item) => {
-              return <ProductCard key={item.idMeal} {...item} />;
-            })}
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              {products &&
+                products.map((item) => {
+                  return <ProductCard key={item.idMeal} {...item} />;
+                })}
+            </>
+          )}
         </div>
       </div>
     </Wrapper>

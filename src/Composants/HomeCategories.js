@@ -1,26 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { HomeCategoryCard } from ".";
+import { HomeCategoryCard, Loading } from ".";
 import { useProductContext } from "../context/ProductContext";
 
 function HomeCategories() {
-  const { categories } = useProductContext();
+  const { categories, loading } = useProductContext();
 
   return (
     <Wrapper>
       <h2 className="title">Catégories</h2>
       <div className="list mobile">
-        {categories.map((item) => {
-          const { idCategory: id } = item;
-          return <HomeCategoryCard key={id} {...item} />;
-        })}
+            {categories.map((item) => {
+              const { idCategory: id } = item;
+              return <HomeCategoryCard key={id} {...item} />;
+            })}
       </div>
       <div className="list large">
-        {categories.slice(0, 4).map((item) => {
-          const { idCategory: id } = item;
-          return <HomeCategoryCard key={id} {...item} />;
-        })}
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            {categories.slice(0, 4).map((item) => {
+              const { idCategory: id } = item;
+              return <HomeCategoryCard key={id} {...item} />;
+            })}
+          </>
+        )}
       </div>
       <Link to="/categories" className="btn-primary btn-marginleft">
         NOS CATÉGORIES

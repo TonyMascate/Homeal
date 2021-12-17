@@ -1,14 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
-import {AiOutlineHeart} from 'react-icons/ai'
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import styles from '../styles/variable';
+import { useProductContext } from '../context/ProductContext';
 
-function LikeBtn() {
+function LikeBtn({id, name, image}) {
+
+  const {manageLikes, likes} = useProductContext()
+
+  const alreadyLiked = likes.find((item) => (item.id = id));
+
     return (
-        <Wrapper>
-            <AiOutlineHeart className='icon'/>
-        </Wrapper>
-    )
+      <Wrapper>
+        {alreadyLiked ? (
+          <AiFillHeart
+            className={`icon`}
+            onClick={() => manageLikes(id, name, image)}
+          />
+        ) : (
+          <AiOutlineHeart
+            className={`icon`}
+            onClick={() => manageLikes(id, name, image)}
+          />
+        )}
+      </Wrapper>
+    );
 }
 
 const Wrapper = styled.button`

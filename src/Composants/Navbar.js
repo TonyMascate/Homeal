@@ -24,7 +24,7 @@ function Navbar() {
           </div>
           <img src={mid} alt="logo du milieu" />
           <div className="right">
-            <Link to="/">
+            <Link to="/likes">
               <AiFillHeart className="icon" />
             </Link>
             <Link to="/">
@@ -55,7 +55,7 @@ function Navbar() {
             </ul>
           </div>
           <div className="icons">
-            <Link to="/">
+            <Link to="/likes">
               <AiFillHeart />
             </Link>
             <Link to="/">
@@ -157,6 +157,7 @@ const Wrapper = styled.nav`
         font-size: 1.3rem;
         li {
           margin: 0 20px;
+          transition: 0.3s ease transform;
           a {
             text-decoration: none;
             color: black;
@@ -165,7 +166,6 @@ const Wrapper = styled.nav`
         }
         li:hover {
           transform: scale(1.2);
-          transition: 0.3s ease transform;
         }
       }
       .icons {

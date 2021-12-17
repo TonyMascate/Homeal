@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { PageHero, HomeCategoryCard } from "../Composants/index";
+import { PageHero, HomeCategoryCard, Loading } from "../Composants/index";
 import { useProductContext } from "../context/ProductContext";
 import styles from "../styles/variable";
 
 function Categories() {
-  const { categories } = useProductContext();
+  const { categories, loading, getAllCategories } = useProductContext();
+
+  useEffect(() => {
+    getAllCategories()
+  }, [])
+  
   return (
     <Wrapper className="page-100">
       <PageHero title="Catégories" />
       <div className="categories">
-        {categories.map((item) => {
-          return <HomeCategoryCard key={item.idCategory} {...item} />;
-        })}
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            {categories.map((item) => {
+              return <HomeCategoryCard key={item.idCategory} {...item}/>;
+            })}
+          </>
+        )}
       </div>
     </Wrapper>
   );

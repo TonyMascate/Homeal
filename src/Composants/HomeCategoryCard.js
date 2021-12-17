@@ -3,13 +3,19 @@ import styled from "styled-components";
 import styles from "../styles/variable";
 import { FiZoomIn } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useProductContext } from "../context/ProductContext";
 
 function HomeCategoryCard({ strCategory: name, strCategoryThumb: image }) {
+  const {setCategory} = useProductContext()
   return (
     <Wrapper>
       <div className="image">
         <img src={image} alt="" />
-        <Link to='/' className="icon btn-icon">
+        <Link
+          to="/products"
+          className="icon btn-icon"
+          onClick={() => setCategory(name)}
+        >
           <FiZoomIn className="zoom" />
         </Link>
       </div>
@@ -48,6 +54,7 @@ const Wrapper = styled.article`
     flex-grow: 1;
     overflow: hidden;
     width: 100%;
+    border-radius: 25px;
     &::after {
       content: "";
       position: absolute;
@@ -56,7 +63,7 @@ const Wrapper = styled.article`
       height: 100%;
       width: 100%;
       background-color: #351501;
-      opacity: 0.4;
+      opacity: 0.1;
     }
     img {
       height: 100%;

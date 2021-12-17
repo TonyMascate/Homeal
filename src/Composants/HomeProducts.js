@@ -4,9 +4,10 @@ import { NextBtn, PrevBtn } from "./index";
 import { useProductContext } from "../context/ProductContext";
 import HomeProductCard from "./HomeProductCard";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 function HomeProducts() {
-  const { homeproducts, productsIndex } = useProductContext();
+  const { homeproducts, productsIndex, loading } = useProductContext();
 
   return (
     <Wrapper>
@@ -26,42 +27,48 @@ function HomeProducts() {
       <h2 className="title">Nos recettes</h2>
       <div className="underline"></div>
       <div className="recette-list">
-        {homeproducts.map((item, personIndex) => {
-          const { idMeal: id } = item;
-          let position = "stockSlide";
-          if (personIndex === productsIndex) {
-            position = "activeSlide";
-          }
-          if (
-            personIndex === productsIndex + 1 ||
-            (productsIndex === homeproducts.length - 1 && personIndex === 0)
-          ) {
-            position = "nextSlide";
-          }
-          if (
-            personIndex === productsIndex - 1 ||
-            (productsIndex === 0 && personIndex === homeproducts.length - 1)
-          ) {
-            position = "lastSlide";
-          }
-          if (
-            personIndex === productsIndex - 2 ||
-            (productsIndex === 0 && personIndex === homeproducts.length - 2)
-          ) {
-            position = "prevStock";
-          }
-          if (
-            personIndex === productsIndex - 2 ||
-            (productsIndex === 1 && personIndex === homeproducts.length - 1)
-          ) {
-            position = "prevStock";
-          }
-          return <HomeProductCard key={id} {...item} position={position} />;
-        })}
-        <NextBtn className="slideBtn" />
-        <PrevBtn className="slideBtn" />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            {homeproducts.map((item, personIndex) => {
+              const { idMeal: id } = item;
+              let position = "stockSlide";
+              if (personIndex === productsIndex) {
+                position = "activeSlide";
+              }
+              if (
+                personIndex === productsIndex + 1 ||
+                (productsIndex === homeproducts.length - 1 && personIndex === 0)
+              ) {
+                position = "nextSlide";
+              }
+              if (
+                personIndex === productsIndex - 1 ||
+                (productsIndex === 0 && personIndex === homeproducts.length - 1)
+              ) {
+                position = "lastSlide";
+              }
+              if (
+                personIndex === productsIndex - 2 ||
+                (productsIndex === 0 && personIndex === homeproducts.length - 2)
+              ) {
+                position = "prevStock";
+              }
+              if (
+                personIndex === productsIndex - 2 ||
+                (productsIndex === 1 && personIndex === homeproducts.length - 1)
+              ) {
+                position = "prevStock";
+              }
+              return <HomeProductCard key={id} {...item} position={position} />;
+            })}
+            <NextBtn className="slideBtn" />
+            <PrevBtn className="slideBtn" />
+          </>
+        )}
       </div>
-      <Link to='/categories' className='btn-primary btn-marginleft'>
+      <Link to="/categories" className="btn-primary btn-marginleft">
         NOS RECETTES
       </Link>
     </Wrapper>

@@ -3,13 +3,16 @@ import { useParams } from "react-router";
 import styled from "styled-components";
 import { AddToCart, LikeBtn } from "../Composants";
 import { useProductContext } from "../context/ProductContext";
+import Categories from "../datas/MealsPerCategorie";
 import styles from "../styles/variable";
 
 function SingleProduct() {
   const { getSingleProduct, singleProduct } = useProductContext();
   const { id } = useParams();
   const urlProduct = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+  const price = Categories.flat().find((item) => item.idMeal === id).price;
   const {
+    idMeal,
     strMeal: name,
     strMealThumb: image,
     strCategory: category,
@@ -107,15 +110,15 @@ function SingleProduct() {
   }, [urlProduct]);
 
   const getYoutube = () => {
-      if(strYoutube){
-          const youtube = strYoutube.replace("watch?v=", "embed/");
-          return youtube;
-        }else{
-            return null
-        }
+    if (strYoutube) {
+      const youtube = strYoutube.replace("watch?v=", "embed/");
+      return youtube;
+    } else {
+      return null;
     }
-    
-    const youtube = getYoutube()
+  };
+
+  const youtube = getYoutube();
 
   return (
     <Wrapper className="page-100">
@@ -146,22 +149,26 @@ function SingleProduct() {
             return null;
           })}
         </div>
+        <div className="price">
+          <h4>Prix :</h4>
+          <p>{price} €</p>
+        </div>
         <div className="buttons">
           <AddToCart />
-          <LikeBtn />
+          <LikeBtn id={idMeal} name={name} image={image} />
         </div>
         <div className="preparation">
           <h4>Préparation :</h4>
           <p>{instructions}</p>
         </div>
-        <div className="video">
+        {/* <div className="video">
           <h4>Vidéo :</h4>
           <div className="wrapper">
             {youtube && (
               <iframe src={youtube} title="Video de la recette"></iframe>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
     </Wrapper>
   );
@@ -209,7 +216,7 @@ const Wrapper = styled.section`
     }
     .ingredients {
       display: flex;
-      margin: 0 -10px;
+      margin: 0 -10px 10px -10px;
       overflow-x: auto;
       padding: 15px 0px 25px 10px;
       .ingredient {
@@ -227,7 +234,22 @@ const Wrapper = styled.section`
         }
       }
     }
+    .price {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      line-height: auto;
+      h4 {
+        margin: 0;
+        margin-right: 10px;
+      }
+      p{
+        font-size: 1.5rem;
+      }
+    }
     .buttons {
+      max-width: 300px;
+      width: 100%;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -241,7 +263,7 @@ const Wrapper = styled.section`
       }
     }
     .video {
-        max-width: 700px;
+      max-width: 700px;
       h4 {
         margin-bottom: 10px;
       }

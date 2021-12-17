@@ -4,7 +4,7 @@ import { useProductContext } from "../context/ProductContext";
 import styles from "../styles/variable";
 
 function FilterSidebar() {
-  const { categories, showFilters, setCategory} = useProductContext();
+  const { categories, showFilters, setCategory, filters: {category}} = useProductContext();
 
   return (
     <Wrapper className={`sidebar ${showFilters ? "show" : "hide"}`}>
@@ -13,7 +13,7 @@ function FilterSidebar() {
         <div className="categories--list">
           {categories.map((item) => {
             return (
-              <button key={item.idCategory} data-label={item.strCategory} onClick={(e) => setCategory(e.target.dataset.label)}>
+              <button key={item.idCategory} data-label={item.strCategory} onClick={(e) => setCategory(e.target.dataset.label)} className={`${item.strCategory === category && 'active'}`}>
                 {item.strCategory}
               </button>
             );
@@ -41,6 +41,10 @@ const Wrapper = styled.div`
       font-size: 1rem;
       margin: 5px 10px 5px 0px;
       cursor: pointer;
+    }
+    .active{
+      color: ${styles.secondary};
+      border-bottom: 2px solid ${styles.secondary} ;
     }
   }
 `;

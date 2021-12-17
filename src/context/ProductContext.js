@@ -19,12 +19,13 @@ const initialState = {
   filters: {
     category: "Beef",
   },
-  loading: false,
+  loading: true,
   homeproducts: [],
   categories: [],
   productsIndex: 0,
   singleProduct: {},
   showFilters: false,
+  likes: [],
 };
 
 const ProductProvider = ({ children }) => {
@@ -68,7 +69,7 @@ const ProductProvider = ({ children }) => {
 
   // SET CATEGORY
   const setCategory = (element) => {
-    dispatch({ type: "CHANGE_CATEGORY", payload: element });
+     dispatch({ type: "CHANGE_CATEGORY", payload: element });
   };
 
   // UPDATE PRODUCTS
@@ -91,11 +92,21 @@ const ProductProvider = ({ children }) => {
     dispatch({ type: "UPDATE_PRODUCTS", payload: newProductList });
   };
 
+  // ADD TO LIKES
+  const manageLikes = (id, name, image) => {
+    const alreadyLiked = state.likes.find(item => item.id = id)
+    console.log('test');
+    if(alreadyLiked){
+      dispatch({type: 'REMOVE_LIKE_ITEM', payload: id})
+    }else{
+      dispatch({ type: "ADD_TO_LIKES", payload: { id, name, image } });
+    }
+  }
+
   // USEEFFECT
   useEffect(() => {
-    getHomeProducts();
-    getAllCategories();
-  }, []);
+    updateProducts()
+  }, [state.filters.category])
 
   return (
     <ProductContext.Provider
@@ -107,6 +118,9 @@ const ProductProvider = ({ children }) => {
         changeShowFilters,
         updateProducts,
         setCategory,
+        getHomeProducts,
+        getAllCategories,
+        manageLikes
       }}
     >
       {children}

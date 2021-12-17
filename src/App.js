@@ -10,12 +10,13 @@ import {
   Likes,
   SingleProduct,
 } from "./Pages/index";
-import { Navbar, Footer } from "./Composants/index";
+import { Navbar, Footer, ScrollToTop } from "./Composants/index";
 
 function App() {
   return (
     <Router>
       <Navbar />
+      <ScrollToTop />
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/products" element={<Produits />}></Route>

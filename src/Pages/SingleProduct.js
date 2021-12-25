@@ -248,7 +248,7 @@ const Wrapper = styled.section`
       }
     }
     .buttons {
-      max-width: 300px;
+      max-width: 320px;
       width: 100%;
       display: flex;
       flex-wrap: wrap;

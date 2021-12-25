@@ -13,5 +13,6 @@ import FilterSidebar from "./FilterSidebar";
 import ProductCard from "./ProductCard";
 import Loading from "./Loading";
 import ScrollToTop from './ScrollToTop'
+import LikeElement from './LikeElement'
 
-export {HomeHero, Navbar, Footer, Concept, LikeBtn, HomeCategories, HomeCategoryCard, NextBtn, PrevBtn, PageHero, AddToCart, FilterSidebar, ProductCard, Loading, ScrollToTop}
+export {HomeHero, Navbar, Footer, Concept, LikeBtn, HomeCategories, HomeCategoryCard, NextBtn, PrevBtn, PageHero, AddToCart, FilterSidebar, ProductCard, Loading, ScrollToTop, LikeElement}

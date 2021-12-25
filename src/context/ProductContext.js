@@ -7,12 +7,6 @@ const ProductContext = createContext();
 
 const urlHome = "https://www.themealdb.com/api/json/v1/1/filter.php?a=French";
 const urlCategories = "https://www.themealdb.com/api/json/v1/1/categories.php";
-// GET MAX PRICE
-const highestprice = Array.from(
-  Categories.flat().map((item) => item.price)
-).sort((a, b) => {
-  return b - a;
-})[0];
 
 const initialState = {
   products: [],
@@ -25,7 +19,6 @@ const initialState = {
   productsIndex: 0,
   singleProduct: {},
   showFilters: false,
-  likes: [],
 };
 
 const ProductProvider = ({ children }) => {
@@ -92,17 +85,6 @@ const ProductProvider = ({ children }) => {
     dispatch({ type: "UPDATE_PRODUCTS", payload: newProductList });
   };
 
-  // ADD TO LIKES
-  const manageLikes = (id, name, image) => {
-    const alreadyLiked = state.likes.find(item => item.id = id)
-    console.log('test');
-    if(alreadyLiked){
-      dispatch({type: 'REMOVE_LIKE_ITEM', payload: id})
-    }else{
-      dispatch({ type: "ADD_TO_LIKES", payload: { id, name, image } });
-    }
-  }
-
   // USEEFFECT
   useEffect(() => {
     updateProducts()
@@ -120,7 +102,6 @@ const ProductProvider = ({ children }) => {
         setCategory,
         getHomeProducts,
         getAllCategories,
-        manageLikes
       }}
     >
       {children}

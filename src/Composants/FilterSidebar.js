@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useProductContext } from "../context/ProductContext";
 import styles from "../styles/variable";
 
 function FilterSidebar() {
-  const { categories, showFilters, setCategory, filters: {category}} = useProductContext();
+  const { categories, showFilters, setCategory, filters: {category}, getAllCategories} = useProductContext();
+
+  useEffect(() => {
+    getAllCategories()
+  }, [])
 
   return (
     <Wrapper className={`sidebar ${showFilters ? "show" : "hide"}`}>

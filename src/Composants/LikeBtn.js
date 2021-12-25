@@ -2,25 +2,25 @@ import React from 'react'
 import styled from 'styled-components'
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import styles from '../styles/variable';
-import { useProductContext } from '../context/ProductContext';
+import { useLikesContext } from '../context/LikesContext';
 
-function LikeBtn({id, name, image}) {
+function LikeBtn({id, name, image, price}) {
 
-  const {manageLikes, likes} = useProductContext()
+  const {manageLikes, likes} = useLikesContext()
 
   const alreadyLiked = likes.find((item) => (item.id = id));
 
     return (
-      <Wrapper>
+      <Wrapper className='likebtn'>
         {alreadyLiked ? (
           <AiFillHeart
             className={`icon`}
-            onClick={() => manageLikes(id, name, image)}
+            onClick={() => manageLikes(id, name, image, price)}
           />
         ) : (
           <AiOutlineHeart
             className={`icon`}
-            onClick={() => manageLikes(id, name, image)}
+            onClick={() => manageLikes(id, name, image, price)}
           />
         )}
       </Wrapper>
@@ -38,6 +38,7 @@ const Wrapper = styled.button`
   justify-content: center;
   color: ${styles.secondary};
   background-color: white;
+  cursor: pointer;
   .icon {
     height: 70%;
     width: 70%;

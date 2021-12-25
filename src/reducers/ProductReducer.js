@@ -68,26 +68,6 @@ function reducer(state, action) {
                     category: action.payload
                 }
             }
-        case 'ADD_TO_LIKES':
-            const {id, name, image} = action.payload
-            const newLikesList = [
-              ...state.likes,
-              {
-                id: id,
-                name: name,
-                image: image,
-              },
-            ];
-            return{
-                ...state,
-                likes: newLikesList
-            }
-        case 'REMOVE_LIKE_ITEM':
-            const newLikes = state.likes.filter(item => item.id !== action.payload)
-            return{
-                ...state,
-                likes: newLikes
-            }
     
         default:
             break;

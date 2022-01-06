@@ -62,7 +62,7 @@ const Wrapper = styled.main`
         &:nth-child(10),
         &:nth-child(11),
         &:nth-child(14),
-        &:nth-child(15){
+        &:nth-child(15) {
           max-width: 580px;
           width: 100%;
         }

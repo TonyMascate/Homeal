@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { AddToCart, LikeBtn } from ".";
 import styles from "../styles/variable";
 
-function LikeElement({name, id, image, price}) {
+function LikeElement({ name, id, image, price }) {
   return (
     <Wrapper>
       <div
@@ -16,7 +16,7 @@ function LikeElement({name, id, image, price}) {
             <h3>{name.length > 25 ? `${name.substring(0, 15)}...` : name}</h3>
             <p>{price} €</p>
           </div>
-          <LikeBtn />
+          <LikeBtn id={id} name={name} image={image} price={price} />
         </div>
         <AddToCart />
         <div class="custom-shape-divider-bottom-1640102104">

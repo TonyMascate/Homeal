@@ -1,30 +1,35 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import styles from '../styles/variable';
-import { useLikesContext } from '../context/LikesContext';
+import styles from "../styles/variable";
+import { useLikesContext } from "../context/LikesContext";
 
-function LikeBtn({id, name, image, price}) {
+function LikeBtn({ id, name, image, price }) {
+  const { manageLikes, likes } = useLikesContext();
 
-  const {manageLikes, likes} = useLikesContext()
+  const alreadyLiked = () => {
+    if (likes.find((item) => item.id === id) != null) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
-  const alreadyLiked = likes.find((item) => (item.id = id));
-
-    return (
-      <Wrapper className='likebtn'>
-        {alreadyLiked ? (
-          <AiFillHeart
-            className={`icon`}
-            onClick={() => manageLikes(id, name, image, price)}
-          />
-        ) : (
-          <AiOutlineHeart
-            className={`icon`}
-            onClick={() => manageLikes(id, name, image, price)}
-          />
-        )}
-      </Wrapper>
-    );
+  return (
+    <Wrapper className="likebtn">
+      {alreadyLiked() === true ? (
+        <AiFillHeart
+          className="icon"
+          onClick={() => manageLikes(id, name, image, price, true)}
+        />
+      ) : (
+        <AiOutlineHeart
+          className="icon"
+          onClick={() => manageLikes(id, name, image, price, false)}
+        />
+      )}
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled.button`
@@ -45,4 +50,4 @@ const Wrapper = styled.button`
   }
 `;
 
-export default LikeBtn
+export default LikeBtn;

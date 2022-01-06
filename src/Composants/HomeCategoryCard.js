@@ -62,11 +62,13 @@ const Wrapper = styled.article`
       top: 0;
       height: 100%;
       width: 100%;
-      background-color: #351501;
-      opacity: 0.1;
+      background-color: #200d00;
+      opacity: 0.2;
     }
     img {
       height: 100%;
+      width: 100%;
+      object-fit: cover;
       transform: scale(1);
     }
   }

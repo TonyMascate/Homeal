@@ -14,41 +14,32 @@ function ProductCard({
   price,
   idMeal: id,
 }) {
-
-  const {products} = useProductContext()
-  const {likes} = useLikesContext()
-
-  let alreadyLiked = products.map(item => {
-    if(likes.find(itemc => itemc.idMeal === item.idMeal)){
-      return true
-    }else {
-      return false
-    }
-  })
-  console.log(alreadyLiked);
-
-  useEffect(() => {
-    
-  }, [])
+  const { products } = useProductContext();
+  const { likes } = useLikesContext();
 
   return (
-      <Wrapper>
-        <div
-          className="image"
-          style={{ backgroundImage: "url(" + image + ")" }}
-        ></div>
-        <div className="info">
-          <h3>{name.length > 20 ? `${name.substring(0, 20)}...` : name}</h3>
-          <p>{price} €</p>
-          <div className="buttons">
-            <AddToCart />
-        <LikeBtn id={id} name={name} image={image} price={price}/>
-        <Link to={`/products/${id}`} className="zoom">
-          <FiZoomIn className="zoomicon"/>
-        </Link>
-          </div>
+    <Wrapper>
+      <div
+        className="image"
+        style={{ backgroundImage: "url(" + image + ")" }}
+      ></div>
+      <div className="info">
+        <h3>{name.length > 20 ? `${name.substring(0, 20)}...` : name}</h3>
+        <p>{price} €</p>
+        <div className="buttons">
+          <AddToCart />
+          <LikeBtn
+            id={id}
+            name={name}
+            image={image}
+            price={price}
+          />
+          <Link to={`/products/${id}`} className="zoom">
+            <FiZoomIn className="zoomicon" />
+          </Link>
         </div>
-      </Wrapper>
+      </div>
+    </Wrapper>
   );
 }
 
@@ -66,6 +57,12 @@ const Wrapper = styled.article`
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   position: relative;
+  .red {
+    background-color: red !important;
+  }
+  .blue {
+    background-color: blue !important;
+  }
   .image {
     width: 100%;
     flex-grow: 1;

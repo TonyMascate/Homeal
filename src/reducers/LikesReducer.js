@@ -2,8 +2,8 @@ import React from "react";
 
 function reducer(state, action) {
   switch (action.type) {
-    case "ADD_TO_LIKES":
-      const { id, name, image, price } = action.payload;
+    case "ADD_LIKE_ITEM":
+      const {id, name, image, price} = action.payload
       return {
         ...state,
         likes: [
@@ -17,10 +17,9 @@ function reducer(state, action) {
         ]
       };
     case "REMOVE_LIKE_ITEM":
-      const newLikes = state.likes.filter((item) => item.id !== action.payload);
       return {
         ...state,
-        likes: newLikes,
+        likes: action.payload
       };
 
     default:

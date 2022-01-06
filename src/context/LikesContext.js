@@ -11,8 +11,13 @@ const LikesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialstate);
 
   // ADD TO LIKES
-  const manageLikes = (id, name, image, price) => {
-    dispatch({ type: "ADD_TO_LIKES", payload: { id, name, image, price } });
+  const manageLikes = (id, name, image, price, liked) => {
+    if (liked === true) {
+      let newLikes = state.likes.filter((item) => item.id !== id);
+      dispatch({ type: "REMOVE_LIKE_ITEM", payload: newLikes });
+    } else {
+      dispatch({type: 'ADD_LIKE_ITEM', payload: {id, name, image, price}})
+    }
   };
 
   return (

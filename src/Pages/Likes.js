@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { LikeElement, PageHero } from "../Composants";
 import { useLikesContext } from "../context/LikesContext";
@@ -14,9 +15,20 @@ function Likes() {
         <h2>Vos recettes sauvegardées</h2>
         <div className="underline"></div>
         <div className="likes-list">
-          {likes.map(item => {
-            return <LikeElement key={item.id} {...item}/>
-          })}
+          {likes.length < 1 ? (
+            <div className="no-content">
+              <h3>Vous n'avez pas de recettes sauvegardées..</h3>
+              <Link to="/categories" className="btn-primary">
+                Voir les recettes
+              </Link>
+            </div>
+          ) : (
+            <div>
+              {likes.map((item) => {
+                return <LikeElement key={item.id} {...item} />;
+              })}
+            </div>
+          )}
         </div>
       </div>
     </Wrapper>
@@ -50,6 +62,18 @@ const Wrapper = styled.section`
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
+      .no-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10px;
+        h3{
+          font-size: 1.3rem;
+          margin-bottom: 20px;
+          text-align: center;
+        }
+      }
     }
   }
 `;

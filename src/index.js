@@ -4,12 +4,15 @@ import "./main.scss";
 import App from "./App";
 import { ProductProvider } from "./context/ProductContext";
 import { LikesProvider } from "./context/LikesContext";
+import { CartProvider } from "./context/CartContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <ProductProvider>
       <LikesProvider>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </LikesProvider>
     </ProductProvider>
   </React.StrictMode>,

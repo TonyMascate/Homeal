@@ -27,13 +27,8 @@ function ProductCard({
         <h3>{name.length > 20 ? `${name.substring(0, 20)}...` : name}</h3>
         <p>{price} €</p>
         <div className="buttons">
-          <AddToCart />
-          <LikeBtn
-            id={id}
-            name={name}
-            image={image}
-            price={price}
-          />
+          <AddToCart id={id} image={image} name={name} price={price} />
+          <LikeBtn id={id} name={name} image={image} price={price} />
           <Link to={`/products/${id}`} className="zoom">
             <FiZoomIn className="zoomicon" />
           </Link>

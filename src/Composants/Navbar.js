@@ -32,7 +32,7 @@ function Navbar() {
             </Link>
           </div>
           <div className="cart-btn">
-            <Link to="/">
+            <Link to="/panier">
               <ImCart className="icon" />
             </Link>
           </div>
@@ -58,11 +58,8 @@ function Navbar() {
             <Link to="/likes">
               <AiFillHeart />
             </Link>
-            <Link to="/">
+            <Link to="/panier">
               <ImCart />
-            </Link>
-            <Link to="/">
-              <FaUserAlt />
             </Link>
           </div>
         </div>
@@ -114,6 +111,7 @@ const Wrapper = styled.nav`
       background-color: ${styles.primary};
       width: 50px;
       height: 50px;
+      border: 2px solid white;
       border-radius: 100%;
       display: flex;
       align-items: center;

@@ -2,10 +2,28 @@ import React from "react";
 import styled from "styled-components";
 import { FaShoppingCart } from "react-icons/fa";
 import styles from "../styles/variable";
+import { useCartContext } from "../context/CartContext";
 
-function AddToCart() {
+function AddToCart({id, name, image, price}) {
+
+  const {cart, addToCart, increaseAmount} = useCartContext()
+
+  const inCart = () => {
+    if (cart.find((item) => item.id === id) != null) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return (
-    <Wrapper className="btn-primary">
+    <Wrapper className="btn-primary" onClick={() => {
+      if(inCart() === false){
+        addToCart(id, name, image, price);
+      }else{
+        increaseAmount(id)
+      }
+    }}>
       <div className="text">Ajouter au panier</div>
       <div className="icon-container">
         <FaShoppingCart className="icon" />

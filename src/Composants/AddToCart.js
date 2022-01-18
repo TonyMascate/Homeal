@@ -93,7 +93,7 @@ const Wrapper = styled.button`
       transform: translateX(calc(-100% + 54px));
       transition: 0.7s ease all;
       p {
-        color: ${styles.lightgrey};
+        color: ${styles.lightgrey} !important;
         width: 100%;
         font-size: 1.5rem;
         text-align: center;

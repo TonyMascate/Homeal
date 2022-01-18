@@ -17,6 +17,8 @@ function Produits() {
     changeShowFilters,
     filters: { category },
     updateProducts,
+    sort,
+    changeSort
   } = useProductContext();
 
   useEffect(() => {
@@ -33,19 +35,11 @@ function Produits() {
               {showFilters ? "Filtres -" : "Filtres +"}
             </button>
             <div className="custom-select">
-              <select name="sort" id="sort">
-                <option value="prix (croissant)" data-label="croissant">
-                  Prix (croissant)
-                </option>
-                <option value="prix (décroissant)" data-label="decroissant">
-                  Prix (décroissant)
-                </option>
-                <option value="nom (a-z)" data-label="nomaz">
-                  Nom (A - Z)
-                </option>
-                <option value="nom (z-a)" data-label="nomza">
-                  Nom (Z - A)
-                </option>
+              <select value={sort} name="sort" id="sort" onChange={changeSort}>
+                <option value="name-a">Nom (A - Z)</option>
+                <option value="name-z">Nom (Z - A)</option>
+                <option value="price-lowest">Prix (croissant)</option>
+                <option value="price-highest">Prix (décroissant)</option>
               </select>
               <span className="custom-arrow"></span>
             </div>
@@ -57,19 +51,11 @@ function Produits() {
           <div className="header">
             <button className="btn-primary">Filtres</button>
             <div className="custom-select">
-              <select name="sort" id="sort">
-                <option value="prix (croissant)" data-label="croissant">
-                  Prix (croissant)
-                </option>
-                <option value="prix (décroissant)" data-label="decroissant">
-                  Prix (décroissant)
-                </option>
-                <option value="nom (a-z)" data-label="nomaz">
-                  Nom (A - Z)
-                </option>
-                <option value="nom (z-a)" data-label="nomza">
-                  Nom (Z - A)
-                </option>
+              <select value={sort} name="sort" id="sort" onChange={changeSort}>
+                <option value="name-a">Nom (A - Z)</option>
+                <option value="name-z">Nom (Z - A)</option>
+                <option value="price-lowest">Prix (croissant)</option>
+                <option value="price-highest">Prix (décroissant)</option>
               </select>
               <span className="custom-arrow"></span>
             </div>

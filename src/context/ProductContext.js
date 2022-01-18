@@ -14,6 +14,7 @@ const initialState = {
     category: "Beef",
   },
   loading: true,
+  sort: 'name-a',
   homeproducts: [],
   categories: [],
   productsIndex: 0,
@@ -85,10 +86,21 @@ const ProductProvider = ({ children }) => {
     dispatch({ type: "UPDATE_PRODUCTS", payload: newProductList });
   };
 
+  // CHANGE SORT
+
+  const changeSort = (e) => {
+    const value = e.target.value
+    dispatch({type: 'UPDATE_SORT', payload: value})
+  }
+
   // USEEFFECT
   useEffect(() => {
     updateProducts()
   }, [state.filters.category])
+
+  useEffect(() => {
+    dispatch({type: 'SORT_PRODUCTS'})
+  }, [state.sort])
 
   return (
     <ProductContext.Provider
@@ -102,6 +114,7 @@ const ProductProvider = ({ children }) => {
         setCategory,
         getHomeProducts,
         getAllCategories,
+        changeSort
       }}
     >
       {children}

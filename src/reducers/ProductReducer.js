@@ -68,6 +68,36 @@ function reducer(state, action) {
                     category: action.payload
                 }
             }
+
+        case 'UPDATE_SORT':
+            return{
+                ...state,
+                sort: action.payload
+            }
+
+        case 'SORT_PRODUCTS':
+            const {sort, products} = state
+            let tempProducts = [...products]
+            if (sort === "price-lowest") {
+              tempProducts = tempProducts.sort((a, b) => a.price - b.price);
+            }
+            if (sort === "price-highest") {
+              tempProducts = tempProducts.sort((a, b) => b.price - a.price);
+            }
+            if (sort === "name-a") {
+              tempProducts = tempProducts.sort((a, b) =>
+                a.strMeal.localeCompare(b.strMeal)
+              );
+            }
+            if (sort === "name-z") {
+              tempProducts = tempProducts.sort((a, b) =>
+                b.strMeal.localeCompare(a.strMeal)
+              );
+            }
+            return{
+                ...state,
+                products: tempProducts
+            }
     
         default:
             break;

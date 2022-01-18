@@ -154,7 +154,7 @@ function SingleProduct() {
           <p>{price} €</p>
         </div>
         <div className="buttons">
-          <AddToCart id={id} image={image} name={name} price={price} />
+          <AddToCart id={id} image={image} name={name} price={price}/>
           <LikeBtn id={idMeal} name={name} image={image} price={price} />
         </div>
         <div className="preparation">
@@ -254,6 +254,10 @@ const Wrapper = styled.section`
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
+      button{
+        max-width: 250px;
+        margin: 5px 0;
+      }
     }
     .preparation {
       margin-top: 20px;

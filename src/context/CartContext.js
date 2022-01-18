@@ -14,12 +14,10 @@ const getLocalStorage = () => {
 
 const initialState = {
   cart: getLocalStorage(),
-  livraison: 2.5,
+  livraison: 2,
   total_price: 0,
   total_items: 0
 };
-
-
 
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -46,6 +44,10 @@ const CartProvider = ({ children }) => {
   const countTotalCart = () => {
     dispatch({type: 'COUNT_TOTAL_CART'})
   }
+
+  const clearCart = () => {
+    dispatch({type: 'CLEAR_CART'})
+  }
   
   // USE EFFECTS
   useEffect(() => {
@@ -61,6 +63,7 @@ const CartProvider = ({ children }) => {
         increaseAmount,
         decreaseAmount,
         deleteCartItem,
+        clearCart
       }}
     >
       {children}

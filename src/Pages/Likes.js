@@ -23,7 +23,7 @@ function Likes() {
               </Link>
             </div>
           ) : (
-            <div>
+            <div className="list">
               {likes.map((item) => {
                 return <LikeElement key={item.id} {...item} />;
               })}
@@ -53,7 +53,7 @@ const Wrapper = styled.section`
       max-width: 800px;
       height: 2px;
       background-color: ${styles.navgrey};
-      margin: 20px 0 50px 0;
+      margin: 20px 0;
     }
     .likes-list {
       max-width: 1100px;
@@ -61,7 +61,13 @@ const Wrapper = styled.section`
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
+      .list{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+      }
       .no-content{
         display: flex;
         flex-direction: column;

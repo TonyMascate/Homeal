@@ -3,23 +3,29 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AddToCart, LikeBtn } from ".";
 import styles from "../styles/variable";
+import { FiZoomIn } from "react-icons/fi";
 
 function LikeElement({ name, id, image, price }) {
   return (
-    <Link to={`/products/${id}`}>
       <Wrapper>
         <div
           className="image"
           style={{ backgroundImage: "url(" + image + ")" }}
-        ></div>
-        <div className="text">
-          <div className="top">
-            <div className="info">
-              <h3>{name.length > 25 ? `${name.substring(0, 15)}...` : name}</h3>
-              <p>{price} €</p>
-            </div>
-            <LikeBtn id={id} name={name} image={image} price={price} />
-          </div>
+        >
+          <Link to={`/products/${id}`} className="zoom">
+            <FiZoomIn className="zoomicon" />
+          </Link>
+        </div>
+        <div className="text-info">
+          <LikeBtn
+            id={id}
+            name={name}
+            image={image}
+            price={price}
+            className="likebtn"
+          />
+          <h3>{name.length > 25 ? `${name.substring(0, 15)}...` : name}</h3>
+          <p>{price} €</p>
           <AddToCart id={id} image={image} name={name} price={price} />
           <div class="custom-shape-divider-bottom-1640102104">
             <svg
@@ -36,7 +42,6 @@ function LikeElement({ name, id, image, price }) {
           </div>
         </div>
       </Wrapper>
-    </Link>
   );
 }
 
@@ -48,6 +53,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 95vw;
   max-width: 300px;
+  min-height: 450px;
   overflow: hidden;
   background-color: white;
   border-radius: 25px;
@@ -56,34 +62,53 @@ const Wrapper = styled.div`
   color: ${styles.darkgrey};
   .image {
     width: 100%;
-    height: 250px;
+    flex-grow: 1;
     margin-right: 10px;
     background-position: center;
     background-size: cover;
+    position: relative;
+    .zoom {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      background-color: ${styles.primary};
+      border-radius: 100%;
+      .zoomicon {
+        height: 60%;
+        width: 60%;
+      }
+    }
   }
-  .text {
+  .text-info {
     width: 100%;
+    min-height: 193px;
+    flex-shrink: 1;
     padding: 15px;
     position: relative;
-    .top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      .info {
-        flex: 1;
-        h3 {
-          width: 100%;
-          font-size: 1.8rem;
-          font-weight: 900;
-        }
-        p {
-          font-size: 1.1rem;
-        }
-      }
-      .likebtn {
-        width: 54px !important;
-        height: 54px;
-      }
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    .likebtn {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      cursor: pointer;
+    }
+    h3 {
+      width: 100%;
+      min-height: 76px;
+      font-size: 1.8rem;
+      font-weight: 900;
+      padding-right: 60px !important;
+    }
+    p {
+      font-size: 1.1rem;
     }
     .btn-primary {
       margin-top: 10px;

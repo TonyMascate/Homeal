@@ -72,6 +72,9 @@ const Wrapper = styled.article`
     align-items: center;
     justify-content: center;
     padding: 20px 10px;
+    .buttons{
+      width: 100%;
+    }
     h3 {
       font-size: 1.5rem;
       text-align: center;

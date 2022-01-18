@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FaShoppingCart } from "react-icons/fa";
 import styles from "../styles/variable";
@@ -16,17 +16,34 @@ function AddToCart({id, name, image, price}) {
     }
   };
 
+  const [active, setActive] = useState(false)
+
+  const animateBtn = () => {
+    setActive(true)
+    setTimeout(() => {setActive(false)}, 3000);
+  }
+
   return (
-    <Wrapper className="btn-primary" onClick={() => {
-      if(inCart() === false){
-        addToCart(id, name, image, price);
-      }else{
-        increaseAmount(id)
-      }
-    }}>
-      <div className="text">Ajouter au panier</div>
-      <div className="icon-container">
-        <FaShoppingCart className="icon" />
+    <Wrapper
+      className="btn-primary"
+      disabled={active ? true : false}
+      onClick={() => {
+        animateBtn()
+        if (inCart() === false) {
+          addToCart(id, name, image, price);
+        } else {
+          increaseAmount(id);
+        }
+      }}
+    >
+      <div className={`button ${active && 'active'}`}>
+        <div className="left">
+          <p>Ajouté !</p>
+          <div className="icon-container">
+            <FaShoppingCart className="icon" />
+          </div>
+        </div>
+        <div className="text">Ajouter au panier</div>
       </div>
     </Wrapper>
   );
@@ -35,45 +52,66 @@ function AddToCart({id, name, image, price}) {
 const Wrapper = styled.button`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   font-weight: 700;
   font-size: 1.2rem;
   border-radius: 10px;
   padding: 0;
   height: 54px;
+  position: relative;
   overflow: hidden;
   cursor: pointer;
+  width: 100%;
   .text {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.3rem;
     text-align: center;
-    padding: 10px;
+    margin: auto;
+    margin-left: 54px;
+    line-height: 100%;
   }
-  .icon-container {
+  .active {
+    .left {
+      transform: translateX(0) !important;
+    }
+  }
+  .button {
+    height: 54px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 54px;
-    height: 54px;
-    background-color: ${styles.primary};
-    position: relative;
-    &::after{
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
+    .left {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      background-color: ${styles.secondary};
+      transform: translateX(calc(-100% + 54px));
+      transition: 0.7s ease all;
+      p {
+        color: ${styles.lightgrey};
         width: 100%;
-        height: 100%;
-        background-color: #000;
-        opacity: 0.1;
-        z-index: 0;
-    }
-    .icon {
-      height: 24px;
-      width: 24px;
-      z-index: 1;
+        font-size: 1.5rem;
+        text-align: center;
+        line-height: 100%;
+        letter-spacing: 3px;
+      }
+      .icon-container {
+        height: 54px;
+        min-width: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .icon {
+          height: 24px;
+          width: 24px;
+          z-index: 1;
+        }
+      }
     }
   }
 `;

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import { useCartContext } from '../context/CartContext';
 import styles from '../styles/variable'
@@ -6,7 +7,7 @@ import formatPrice from '../utils/helper'
 
 function CartSubtotal() {
 
-    const {total_price, total_items, livraison} = useCartContext()
+    const {total_price, livraison} = useCartContext()
 
     return (
       <Wrapper>
@@ -27,7 +28,7 @@ function CartSubtotal() {
           <p>Total :</p>
           <p className="price">{formatPrice(total_price + livraison)}</p>
         </div>
-        <button className="btn-primary">Passer au paiement</button>
+        <Link to='/paiement' className="btn-primary">Passer au paiement</Link>
       </Wrapper>
     );
 }

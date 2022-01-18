@@ -24,7 +24,7 @@ function HomeProductCard({
             <Link to={`/products/${id}`} className="btn-primary">
               VOIR
             </Link>
-            <LikeBtn />
+            <LikeBtn id={id} name={name} image={image} price={product.price}/>
           </div>
         </div>
       </div>

@@ -69,6 +69,12 @@ function CartReducer(state, action) {
         total_price: parseFloat(subtotal.totalCart),
       };
 
+    case 'CLEAR_CART':
+      return{
+        ...state,
+        cart: []
+      }
+
     default:
       break;
   }

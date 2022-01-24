@@ -5,6 +5,7 @@ import { AiFillHome, AiFillHeart } from "react-icons/ai";
 import { BsFillGridFill } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import { ImCart } from "react-icons/im";
+import { MdEmail } from "react-icons/md";
 import mid from "../img/mid-nav.svg";
 import logo from "../img/Homeal.svg";
 import styles from '../styles/variable'
@@ -27,8 +28,8 @@ function Navbar() {
             <Link to="/likes">
               <AiFillHeart className="icon" />
             </Link>
-            <Link to="/">
-              <FaUserAlt className="icon" />
+            <Link to="/contact">
+              <MdEmail className="icon letter" />
             </Link>
           </div>
           <div className="cart-btn">
@@ -103,6 +104,9 @@ const Wrapper = styled.nav`
       height: 24px;
       width: 24px;
       color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     img {
       margin: 0 -2px;

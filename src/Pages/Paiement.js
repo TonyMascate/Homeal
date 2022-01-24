@@ -42,6 +42,7 @@ const Wrapper = styled.section`
     max-width: 500px;
     width: 100%;
     margin: 30px auto;
+    padding: 0 10px;
     .underline {
       height: 2px;
       width: 100%;
